@@ -1,8 +1,41 @@
 window.onload = main;
 
 function main() {
-    var test = hitProbability(0, 5, 5);
-    var stopper = 0;
+    var diceMaxNum = 5;
+
+    var freePeoplesUnits = document.querySelector("#battle-app #free-peoples.faction .armySettings .unitInputs");
+    var shadowUnits = document.querySelector("#battle-app #shadow.faction .armySettings .unitInputs");
+
+    var submitButton = document.querySelector("#battle-app #submit-button");
+    submitButton.addEventListener("click", function() {
+        var freePeopleRegulars = freePeoplesUnits.querySelector(".regulars").value;
+        var freePoepleElites = freePeoplesUnits.querySelector(".elites").value;
+        var freePeopleLeaders = freePeoplesUnits.querySelector(".leaders").value;
+    
+        var shadowRegulars = shadowUnits.querySelector(".regulars").value;
+        var shadowElites = shadowUnits.querySelector(".elites").value;
+        var shadowLeaders = shadowUnits.querySelector(".leaders").value;
+
+        var freePeopleDice = Math.min(freePeopleRegulars + freePoepleElites, diceMaxNum);
+        var shadowDice = Math.min(shadowRegulars + shadowElites, diceMaxNum);
+
+        var freePeopleStats = "";
+        var shadowStats = "";
+
+        for(var i = 0; i <= diceMaxNum; i++) {
+            var freePeoplesProbability = hitProbability(i, freePeopleDice, freePeopleLeaders);
+            var shadowProbability = hitProbability(i, shadowDice, shadowLeaders);
+
+            freePeopleStats += i + " hits: " + freePeoplesProbability + "\n";
+            shadowStats += i + " hits: " + shadowProbability + "\n";
+        }
+
+        var freePeopleStatWindow = document.querySelector("#battle-app #free-peoples.faction .statWindow p");
+        var shadowStatWindow = document.querySelector("#battle-app #shadow.faction .statWindow p");
+
+        freePeopleStatWindow.innerHTML = freePeopleStats;
+        shadowStatWindow.innerHTML = shadowStats;
+    })
 }
 
 function hitProbability(hits, dice, rerolls) {
@@ -10,7 +43,7 @@ function hitProbability(hits, dice, rerolls) {
 
     for(var i = 0; i <= hits; i++) {
         var baseHit = binomialProbability(i, dice, 2 / 6);
-        var rerollHit = binomialProbability(hits - i, rerolls, 2 / 6);
+        var rerollHit = binomialProbability(hits - i, rerolls - i, 2 / 6);
 
         totalProbability += baseHit * rerollHit;
     }

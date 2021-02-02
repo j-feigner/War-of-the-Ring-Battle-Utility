@@ -52,6 +52,9 @@ html {
     height: 130px;
     top: 250px;
     padding: 10px;
+    color: black;
+    font-size: 15px;
+    white-space: pre-line;
     background-color: white;
 }
 
