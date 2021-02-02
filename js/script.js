@@ -1,7 +1,20 @@
 window.onload = main;
 
 function main() {
+    var test = hitProbability(0, 5, 5);
+    var stopper = 0;
+}
 
+function hitProbability(hits, dice, rerolls) {
+    var totalProbability = 0;
+
+    for(var i = 0; i <= hits; i++) {
+        var baseHit = binomialProbability(i, dice, 2 / 6);
+        var rerollHit = binomialProbability(hits - i, rerolls, 2 / 6);
+
+        totalProbability += baseHit * rerollHit;
+    }
+    return totalProbability;
 }
 
 function attack(hitThreshold) {
