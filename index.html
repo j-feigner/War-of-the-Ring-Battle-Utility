@@ -8,35 +8,25 @@
 <body>
     <div id="battle-app">
         <div id="free-peoples" class="armySettings">
-            <div class="unitInput">
-                <label for="leaders">Leaders: </label>
+            <div class="unitInputs">
                 <input type="text" id="leaders" />
-            </div>
-            <div class="unitInput">
-                <label for="elites">Elites: </label>
                 <input type="text" id="elites" />
-            </div>
-            <div class="unitInput">
-                <label for="regulars">Regulars: </label>
                 <input type="text" id="regulars" />
             </div>
         </div>
-        <br/>
         <div id="shadow" class="armySettings">
-            <div class="unitInput">
-                <label for="leaders">Leaders: </label>
+            <div class="unitInputs">
                 <input type="text" id="leaders" />
-            </div>
-            <div class="unitInput">
-                <label for="elites">Elites: </label>
                 <input type="text" id="elites" />
-            </div>
-            <div class="unitInput">
-                <label for="regulars">Regulars: </label>
                 <input type="text" id="regulars" />
             </div>
         </div>
-        <input type="button" value="Go" />
+        <div id="unit-labels">
+            <p>Leaders</p>
+            <p>Elites</p>
+            <p>Regulars</p>
+        </div>
+        <input type="button" value="Go" id="submit-button"/>
     </div>
 
     <script src="js/script.js"></script>

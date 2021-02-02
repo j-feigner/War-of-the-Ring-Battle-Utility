@@ -16,11 +16,22 @@ html {
     font-weight: bold;
     font-size: 20px;
     border-radius: 10px;
-    background-color: grey;
+    background-color: slategrey;
     transform: translate(-50%, -50%);
 }
 
-.armySettings {
+#battle-app #unit-labels {
+    position: absolute;
+    width: 300px;
+    height: 150px;
+    top: 105px;
+    left: 50%;
+    text-align: center;
+    background-color: grey;
+    transform: translateX(-50%);
+}
+
+#battle-app .armySettings {
     position: absolute;
     width: 300px;
     height: 400px;
@@ -29,27 +40,35 @@ html {
     border-radius: 10px;
 }
 
-.armySettings .unitInput {
-    width: 100%;
+#battle-app .armySettings .unitInputs input {
+    display: block;
+    width: 50px;
     height: 50px;
 }
 
-.armySettings .unitInput label {
-    display: inline-block;
-    width: 30%;
-}
-
-.armySettings .unitInput input {
-    width: 30px;
-    height: 30px;
-}
-
-#free-peoples.armySettings {
+#battle-app #free-peoples.armySettings {
     left: 10%;
     background-color: lightblue;
 }
 
-#shadow.armySettings {
+#battle-app #free-peoples.armySettings .unitInputs {
+    position: absolute;
+    left: 35%;
+}
+
+#battle-app #shadow.armySettings {
     right: 10%;
     background-color: lightcoral;
+}
+
+#battle-app #shadow.armySettings .unitInputs {
+    position: absolute;
+    right: 35%;
+}
+
+#battle-app #submit-button {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translateX(-50%);
 }
