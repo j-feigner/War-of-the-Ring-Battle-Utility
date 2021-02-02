@@ -1,11 +1,7 @@
 window.onload = main;
 
 function main() {
-    var dieRollerDisplay = document.querySelector(".dieRollerDisplay");
-    var dieRollerButton = document.querySelector(".dieRoller input");
-    dieRollerButton.addEventListener("click", () => {
-        dieRollerDisplay.innerHTML = attack(5);
-    })
+
 }
 
 function attack(hitThreshold) {
@@ -24,7 +20,7 @@ function attack(hitThreshold) {
             hits++;
         }
     }) 
-    
+
     return hits;
 }
 
