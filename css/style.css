@@ -8,7 +8,7 @@ html {
 #battle-app {
     position: absolute;
     width: 950px;
-    height: 750px;
+    height: 600px;
     top: 50%;
     left: 50%;
     color: white;
@@ -23,15 +23,15 @@ html {
 #battle-app #unit-labels {
     position: absolute;
     width: 300px;
-    height: 150px;
-    top: 105px;
+    height: 200px;
+    top: 95px;
     left: 50%;
     text-align: center;
     background-color: grey;
     transform: translateX(-50%);
 }
 
-#battle-app .armySettings {
+#battle-app .faction {
     position: absolute;
     width: 300px;
     height: 400px;
@@ -40,35 +40,48 @@ html {
     border-radius: 10px;
 }
 
-#battle-app .armySettings .unitInputs input {
+#battle-app .faction .armySettings .unitInputs input {
     display: block;
     width: 50px;
     height: 50px;
 }
 
-#battle-app #free-peoples.armySettings {
+#battle-app .faction .statWindow {
+    position: relative;
+    width: 280px;
+    height: 130px;
+    top: 250px;
+    padding: 10px;
+    background-color: white;
+}
+
+#battle-app #free-peoples.faction {
     left: 10%;
     background-color: lightblue;
 }
 
-#battle-app #free-peoples.armySettings .unitInputs {
+#battle-app #free-peoples.faction .armySettings .unitInputs {
     position: absolute;
-    left: 35%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-#battle-app #shadow.armySettings {
+#battle-app #shadow.faction {
     right: 10%;
     background-color: lightcoral;
 }
 
-#battle-app #shadow.armySettings .unitInputs {
+#battle-app #shadow.faction .armySettings .unitInputs {
     position: absolute;
-    right: 35%;
+    right: 50%;
+    transform: translateX(50%);
 }
 
 #battle-app #submit-button {
     position: absolute;
-    top: 35%;
+    width: 100px;
+    height: 30px;
+    top: 245px;
     left: 50%;
     transform: translateX(-50%);
 }
