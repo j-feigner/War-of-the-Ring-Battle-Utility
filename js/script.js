@@ -8,13 +8,13 @@ function main() {
 
     var submitButton = document.querySelector("#battle-app #submit-button");
     submitButton.addEventListener("click", function() {
-        var freePeopleRegulars = freePeoplesUnits.querySelector(".regulars").value;
-        var freePoepleElites = freePeoplesUnits.querySelector(".elites").value;
-        var freePeopleLeaders = freePeoplesUnits.querySelector(".leaders").value;
+        var freePeopleRegulars = parseInt(freePeoplesUnits.querySelector(".regulars").value);
+        var freePoepleElites = parseInt(freePeoplesUnits.querySelector(".elites").value);
+        var freePeopleLeaders = parseInt(freePeoplesUnits.querySelector(".leaders").value);
     
-        var shadowRegulars = shadowUnits.querySelector(".regulars").value;
-        var shadowElites = shadowUnits.querySelector(".elites").value;
-        var shadowLeaders = shadowUnits.querySelector(".leaders").value;
+        var shadowRegulars = parseInt(shadowUnits.querySelector(".regulars").value);
+        var shadowElites = parseInt(shadowUnits.querySelector(".elites").value);
+        var shadowLeaders = parseInt(shadowUnits.querySelector(".leaders").value);
 
         var freePeopleDice = Math.min(freePeopleRegulars + freePoepleElites, diceMaxNum);
         var shadowDice = Math.min(shadowRegulars + shadowElites, diceMaxNum);
@@ -39,15 +39,7 @@ function main() {
 }
 
 function hitProbability(hits, dice, rerolls) {
-    var totalProbability = 0;
-
-    for(var i = 0; i <= hits; i++) {
-        var baseHit = binomialProbability(i, dice, 2 / 6);
-        var rerollHit = binomialProbability(hits - i, rerolls - i, 2 / 6);
-
-        totalProbability += baseHit * rerollHit;
-    }
-    return totalProbability;
+    
 }
 
 function attack(hitThreshold) {

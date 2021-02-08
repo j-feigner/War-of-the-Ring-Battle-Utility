@@ -1,6 +1,9 @@
 // Returns the product of all positive integers less than or equal to an integer n
 function factorial(n) {
-    return n <= 0 ? 1 : n * factorial(n - 1);
+    if(n < 0 || !Number.isInteger(n))
+        return null;
+    else
+        return n <= 0 ? 1 : n * factorial(n - 1);
 }
 
 // Returns number of combinations of r items that can be made from a collection of n items.
