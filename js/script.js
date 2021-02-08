@@ -22,17 +22,17 @@ function main() {
         var freePeopleStats = "";
         var shadowStats = "";
 
-        var freePeopleDist = hitDistribution(freePeopleDice, 2 / 6);
+        var freePeopleDist = hitDistribution(freePeopleDice, freePeopleLeaders);
         var freePeopleMean = meanHits(freePeopleDist);
 
-        var shadowDist = hitDistribution(shadowDice, 2 / 6);
+        var shadowDist = hitDistribution(shadowDice, shadowLeaders);
         var shadowMean = meanHits(shadowDist);
 
         var freePeopleStatWindow = document.querySelector("#battle-app #free-peoples.faction .statWindow p");
         var shadowStatWindow = document.querySelector("#battle-app #shadow.faction .statWindow p");
 
-        freePeopleStatWindow.innerHTML = freePeopleStats;
-        shadowStatWindow.innerHTML = shadowStats;
+        freePeopleStatWindow.innerHTML = freePeopleMean;
+        shadowStatWindow.innerHTML = shadowMean;
     })
 }
 
@@ -44,16 +44,25 @@ function meanHits(distribution) {
     return weightedTotal;
 }
 
-function hitDistribution(dice, successChance) {
+function hitDistribution(dice, rerolls) {
     var distribution = [];
     for(var i = 0; i <= dice; i++) {
-        distribution[i] = binomialProbability(i, dice, successChance);
+        distribution[i] = hitProbability(i, dice, rerolls);
     }
     return distribution;
 }
 
 function hitProbability(hits, dice, rerolls) {
-    return binomialProbability(hits, dice, 2 / 6);
+    var baseHitChance = 2 / 6;
+    var rerollHitChance = baseHitChance + ((1 - baseHitChance) * baseHitChance);
+
+    if(rerolls > dice) {
+        rerolls = dice;
+    }
+
+    var totalHitChance = (baseHitChance * (dice - rerolls) + rerollHitChance * rerolls) / dice;
+
+    return binomialProbability(hits, dice, totalHitChance);
 }
 
 function attack(hitThreshold) {
