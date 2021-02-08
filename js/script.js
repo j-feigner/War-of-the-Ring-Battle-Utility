@@ -3,38 +3,35 @@ window.onload = main;
 function main() {
     var diceMaxNum = 5;
 
-    var freePeoplesUnits = document.querySelector("#battle-app #free-peoples.faction .armySettings .unitInputs");
-    var shadowUnits = document.querySelector("#battle-app #shadow.faction .armySettings .unitInputs");
+    var freePeoples = new Faction();
+    var shadow = new Faction();
+
+    freePeoples.unitInputs = document.querySelector("#battle-app #free-peoples.faction .armySettings .unitInputs");
+    shadow.unitInputs = document.querySelector("#battle-app #shadow.faction .armySettings .unitInputs");
 
     var submitButton = document.querySelector("#battle-app #submit-button");
     submitButton.addEventListener("click", function() {
-        var freePeopleRegulars = parseInt(freePeoplesUnits.querySelector(".regulars").value);
-        var freePoepleElites = parseInt(freePeoplesUnits.querySelector(".elites").value);
-        var freePeopleLeaders = parseInt(freePeoplesUnits.querySelector(".leaders").value);
-    
-        var shadowRegulars = parseInt(shadowUnits.querySelector(".regulars").value);
-        var shadowElites = parseInt(shadowUnits.querySelector(".elites").value);
-        var shadowLeaders = parseInt(shadowUnits.querySelector(".leaders").value);
-
-        var freePeopleDice = Math.min(freePeopleRegulars + freePoepleElites, diceMaxNum);
-        var shadowDice = Math.min(shadowRegulars + shadowElites, diceMaxNum);
+        freePeoples.update();
+        shadow.update();
 
         var freePeopleStats = "";
         var shadowStats = "";
 
-        var freePeopleDist = hitDistribution(freePeopleDice, freePeopleLeaders);
+        var freePeopleDist = hitDistribution(freePeoples.availableDice, freePeoples.leaders, 2 / 6);
         var freePeopleMean = meanHits(freePeopleDist);
         freePeopleDist.forEach((hitChance, hitValue) => {
-            freePeopleStats += hitValue + ": " + hitChance.toFixed(3) + "\n";
+            var hitPercentage = hitChance * 100;
+            freePeopleStats += hitValue + " Hits: " + hitPercentage.toFixed(2) + "%\n";
         })
-        freePeopleStats += "\n" + "Average: " + freePeopleMean.toFixed(2) + "\n";
+        freePeopleStats += "\n" + "Average Hits: " + freePeopleMean.toFixed(2) + "\n";
 
-        var shadowDist = hitDistribution(shadowDice, shadowLeaders);
+        var shadowDist = hitDistribution(shadow.availableDice, shadow.leaders, 2 / 6);
         var shadowMean = meanHits(shadowDist);
         shadowDist.forEach((hitChance, hitValue) => {
-            shadowStats += hitValue + ": " + hitChance.toFixed(3) + "\n";
+            var hitPercentage = hitChance * 100;
+            shadowStats += hitValue + " Hits: " + hitPercentage.toFixed(2) + "%\n";
         })
-        shadowStats += "\n" + "Average: " + shadowMean.toFixed(2) + "\n";
+        shadowStats += "\n" + "Average Hits: " + shadowMean.toFixed(2) + "\n";
 
         var freePeopleStatWindow = document.querySelector("#battle-app #free-peoples.faction .statWindow p");
         var shadowStatWindow = document.querySelector("#battle-app #shadow.faction .statWindow p");
@@ -42,6 +39,24 @@ function main() {
         freePeopleStatWindow.innerHTML = freePeopleStats;
         shadowStatWindow.innerHTML = shadowStats;
     })
+}
+
+function Faction() {
+    this.regulars = 0;
+    this.elites = 0;
+    this.leaders = 0;
+
+    this.unitInputs = null;
+
+    this.availableDice = 0;
+
+    this.update = function() {
+        this.regulars = parseInt(this.unitInputs.querySelector(".regulars").value);
+        this.elites = parseInt(this.unitInputs.querySelector(".elites").value);
+        this.leaders = parseInt(this.unitInputs.querySelector(".leaders").value);
+
+        this.availableDice = Math.min(this.regulars + this.elites, 5);
+    }
 }
 
 function meanHits(distribution) {
@@ -52,16 +67,16 @@ function meanHits(distribution) {
     return weightedTotal;
 }
 
-function hitDistribution(dice, rerolls) {
+function hitDistribution(dice, rerolls, success) {
     var distribution = [];
     for(var i = 0; i <= dice; i++) {
-        distribution[i] = hitProbability(i, dice, rerolls);
+        distribution[i] = hitProbability(i, dice, rerolls, success);
     }
     return distribution;
 }
 
-function hitProbability(hits, dice, rerolls) {
-    var baseHitChance = 2 / 6;
+function hitProbability(hits, dice, rerolls, success) {
+    var baseHitChance = success;
     var rerollHitChance = baseHitChance + ((1 - baseHitChance) * baseHitChance);
 
     if(rerolls > dice) {
