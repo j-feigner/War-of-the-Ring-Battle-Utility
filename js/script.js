@@ -24,15 +24,23 @@ function main() {
 
         var freePeopleDist = hitDistribution(freePeopleDice, freePeopleLeaders);
         var freePeopleMean = meanHits(freePeopleDist);
+        freePeopleDist.forEach((hitChance, hitValue) => {
+            freePeopleStats += hitValue + ": " + hitChance.toFixed(3) + "\n";
+        })
+        freePeopleStats += "\n" + "Average: " + freePeopleMean.toFixed(2) + "\n";
 
         var shadowDist = hitDistribution(shadowDice, shadowLeaders);
         var shadowMean = meanHits(shadowDist);
+        shadowDist.forEach((hitChance, hitValue) => {
+            shadowStats += hitValue + ": " + hitChance.toFixed(3) + "\n";
+        })
+        shadowStats += "\n" + "Average: " + shadowMean.toFixed(2) + "\n";
 
         var freePeopleStatWindow = document.querySelector("#battle-app #free-peoples.faction .statWindow p");
         var shadowStatWindow = document.querySelector("#battle-app #shadow.faction .statWindow p");
 
-        freePeopleStatWindow.innerHTML = freePeopleMean;
-        shadowStatWindow.innerHTML = shadowMean;
+        freePeopleStatWindow.innerHTML = freePeopleStats;
+        shadowStatWindow.innerHTML = shadowStats;
     })
 }
 
