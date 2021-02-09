@@ -15,5 +15,8 @@ function combination(n, r) {
 // Returns probability of getting exactly x successes on n trials given the probability of x
 // being successful (px)
 function binomialProbability(x, n, px) {
-    return combination(n, x) * Math.pow(px, x) * Math.pow(1 - px, n - x);
+    if(x > n) 
+        return 0;
+    else
+        return combination(n, x) * Math.pow(px, x) * Math.pow(1 - px, n - x);
 }

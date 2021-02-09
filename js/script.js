@@ -72,20 +72,32 @@ function hitDistribution(dice, rerolls, success) {
 
 // Finds the probability of rolling a specific number of hits from a given dice pool, with rerolls.
 function hitProbability(hits, dice, rerolls, success) {
-    // Set success chance for first roll of dice pool
-    var baseHitChance = success;
+    // If there are no rerolls available, take base probability
+    if(rerolls == 0) {
+        return binomialProbability(hits, dice, success);
+    } else {
+        var total = 0;
 
-    // Calculate success chance for a die given an allowed reroll on a miss
-    var rerollHitChance = baseHitChance + ((1 - baseHitChance) * baseHitChance);
+        // Iterate for each possible hit value in the base roll
+        for(var i = 0; i <= hits; i++) {
+            // Chance of rolling i hits on base roll (0, 1, 2, ..., desired hits)
+            var baseRoll = binomialProbability(i, dice, success);
 
-    // Cap available rerolls to total number of available dice
-    if(rerolls > dice)
-        rerolls = dice;
+            // Find dice remaining from rolling i hits
+            var diceRemaining = dice - i;
 
-    // Calculate total average hit chance for all dice
-    var totalHitChance = (baseHitChance * (dice - rerolls) + rerollHitChance * rerolls) / dice;
+            // Determine how many dice can be allocated to the reroll
+            var rerollDice = Math.min(diceRemaining, rerolls);
 
-    return binomialProbability(hits, dice, totalHitChance);
+            // Chance of rolling remaining hits with allocated reroll dice
+            var reroll = binomialProbability(hits - i, rerollDice, success);
+
+            // Add current hit combination probability to total
+            total += baseRoll * reroll;
+        }
+
+        return total;
+    }
 }
 
 // Returns a random number between 1 and sides. Simulates rolling an n-sided die.
