@@ -10,10 +10,12 @@ function main() {
     shadow.unitInputs = document.querySelector("#battle-app #shadow.faction .armySettings .unitInputs");
     shadow.statOutput = document.querySelector("#battle-app #shadow.faction .statWindow p");
 
-    var submitButton = document.querySelector("#battle-app #submit-button");
-    submitButton.addEventListener("click", function() {
-        freePeoples.display();
-        shadow.display();
+    var inputs = document.querySelectorAll("#battle-app .faction .armySettings .unitInputs input");
+    inputs.forEach((input) => {
+        input.addEventListener("change", function() {
+            freePeoples.display();
+            shadow.display();
+        })
     })
 }
 

@@ -83,12 +83,3 @@ html {
 #battle-app #free-peoples.faction .unitInputs {
     right: 0px;
 }
-
-#battle-app #submit-button {
-    position: absolute;
-    width: 100px;
-    height: 30px;
-    top: 85%;
-    left: 50%;
-    transform: translateX(-50%);
-}
