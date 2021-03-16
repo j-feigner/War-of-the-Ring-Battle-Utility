@@ -11,11 +11,17 @@
 <body>
     <div id="battle-app">
         <div id="free-peoples" class="faction">
+            <div class="factionName">
+                <p>Free Peoples</p>
+            </div>
             <div class="armySettings">
                 <div class="unitInputs">
-                    <input type="number" class="leaders" min="0" max="10" value="0"/>
-                    <input type="number" class="elites" min="0" max="10" value="0"/>
-                    <input type="number" class="regulars" min="0" max="10" value="0"/>
+                    <label for="fp-leaders">Leaders </label>
+                    <input type="number" id="fp-leaders" class="leaders" min="0" max="10" value="0"/>
+                    <label for="fp-elites">Elites </label>
+                    <input type="number" id="fp-elites" class="elites" min="0" max="10" value="0"/>
+                    <label for="fp-regulars">Regulars </label>
+                    <input type="number" id="fp-regulars" class="regulars" min="0" max="10" value="0"/>
                 </div>
             </div>
             <div class="statWindow">
@@ -23,23 +29,23 @@
             </div>
         </div>
         <div id="shadow" class="faction">
+            <div class="factionName">
+                <p>Shadow</p>
+            </div>
             <div class="armySettings">
                 <div class="unitInputs">
-                    <input type="number" class="leaders" min="0" max="10" value="0"/>
-                    <input type="number" class="elites" min="0" max="10" value="0"/>
-                    <input type="number" class="regulars" min="0" max="10" value="0"/>
+                    <input type="number" id="shadow-leaders" class="leaders" min="0" max="10" value="0"/>
+                    <label for="shadow-leaders"> Leaders</label>
+                    <input type="number" id="shadow-elites" class="elites" min="0" max="10" value="0"/>
+                    <label for="shadow-elites"> Elites</label>
+                    <input type="number" id="shadow-regulars" class="regulars" min="0" max="10" value="0"/>
+                    <label for="shadow-regulars"> Regulars</label>
                 </div>
             </div>
             <div class="statWindow">
                 <p></p>
             </div>
         </div>
-        <div id="unit-labels">
-            <p>Leaders</p>
-            <p>Elites</p>
-            <p>Regulars</p>
-        </div>
-        <input type="button" value="Go" id="submit-button"/>
     </div>
 
     <script src="js/script.js"></script>
