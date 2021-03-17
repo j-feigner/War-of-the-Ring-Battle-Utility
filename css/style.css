@@ -66,13 +66,23 @@ html {
     color: black;
     font-size: 15px;
     white-space: pre-line;
-    background-color: lightgray;
+    background-color: white;
 }
 
 #battle-app .faction .statWindow p {
+    display: block;
+    position: relative;
     width: 100%;
-    height: 100%;
+    top: -10px;
     margin: 0px;
+}
+
+#battle-app .faction .statWindow .hitDist {
+    height: 65%;
+}
+
+#battle-app .faction .statWindow .hitAvg {
+    height: 20%;
 }
 
 #battle-app #free-peoples.faction {
