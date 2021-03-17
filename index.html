@@ -16,12 +16,28 @@
             </div>
             <div class="armySettings">
                 <div class="unitInputs">
-                    <label for="fp-leaders">Leaders </label>
-                    <input type="number" id="fp-leaders" class="leaders" min="0" max="10" value="0"/>
-                    <label for="fp-elites">Elites </label>
-                    <input type="number" id="fp-elites" class="elites" min="0" max="10" value="0"/>
-                    <label for="fp-regulars">Regulars </label>
-                    <input type="number" id="fp-regulars" class="regulars" min="0" max="10" value="0"/>
+                    <div class="unitInputPair">
+                        <label for="fp-leaders">Leaders </label>
+                        <input type="number" id="fp-leaders" class="leaders" min="0" max="10" value="0"/>
+                    </div>
+                    <div class="unitInputPair">
+                        <label for="fp-elites">Elites </label>
+                        <input type="number" id="fp-elites" class="elites" min="0" max="10" value="0"/>
+                    </div>
+                    <div class="unitInputPair">
+                        <label for="fp-regulars">Regulars </label>
+                        <input type="number" id="fp-regulars" class="regulars" min="0" max="10" value="0"/>
+                    </div>
+                </div>
+            </div>
+            <div class="hitSettings">
+                <div class="hitInputPair">
+                    <label for="fp-baseroll-hit">Base Hits On </label>
+                    <input type="number" id="fp-baseroll-hit" class="baseroll" min="1" max="6" value="5"/>+
+                </div>
+                <div class="hitInputPair">
+                    <label for="fp-reroll-hit">Reroll Hits On </label>
+                    <input type="number" id="fp-reroll-hit" class="reroll" min="1" max="6" value="5"/>+
                 </div>
             </div>
             <div class="statWindow">
@@ -34,12 +50,28 @@
             </div>
             <div class="armySettings">
                 <div class="unitInputs">
-                    <input type="number" id="shadow-leaders" class="leaders" min="0" max="10" value="0"/>
-                    <label for="shadow-leaders"> Leaders</label>
-                    <input type="number" id="shadow-elites" class="elites" min="0" max="10" value="0"/>
-                    <label for="shadow-elites"> Elites</label>
-                    <input type="number" id="shadow-regulars" class="regulars" min="0" max="10" value="0"/>
-                    <label for="shadow-regulars"> Regulars</label>
+                    <div class="unitInputPair">
+                        <label for="shadow-leaders"> Leaders</label>
+                        <input type="number" id="shadow-leaders" class="leaders" min="0" max="10" value="0"/>
+                    </div>
+                    <div class="unitInputPair">
+                        <label for="shadow-elites"> Elites</label>
+                        <input type="number" id="shadow-elites" class="elites" min="0" max="10" value="0"/>
+                    </div>
+                    <div class="unitInputPair">
+                        <label for="shadow-regulars"> Regulars</label>
+                        <input type="number" id="shadow-regulars" class="regulars" min="0" max="10" value="0"/>
+                    </div>
+                </div>
+            </div>
+            <div class="hitSettings">
+                <div class="hitInputPair">
+                    <label for="shadow-baseroll-hit">Base Hits On </label>
+                    <input type="number" id="shadow-baseroll-hit" class="baseroll" min="0" max="6" value="5"/>+
+                </div>
+                <div class="hitInputPair">
+                    <label for="shadow-reroll-hit">Reroll Hits On </label>
+                    <input type="number" id="shadow-reroll-hit" class="reroll" min="0" max="6" value="5"/>+
                 </div>
             </div>
             <div class="statWindow">
