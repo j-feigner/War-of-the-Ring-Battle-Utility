@@ -20,11 +20,11 @@ html {
 
 #battle-app .faction {
     display: inline-block;
-    width: 200px;
+    width: 240px;
     height: 450px;
     margin: 20px;
     padding: 20px;
-    /* border: 2px solid black; */
+    border: 1px solid black;
 }
 
 #battle-app .faction .factionName p {
@@ -49,7 +49,6 @@ html {
     display: inline-block;
     width: 100px;
     height: 40px;
-    text-align: center;
     vertical-align: center;
 }
 
@@ -62,6 +61,7 @@ html {
 
 #battle-app .faction .statWindow {
     height: 150px;
+    margin-top: 20px;
     padding: 10px;
     color: black;
     font-size: 15px;
