@@ -7,15 +7,30 @@ html {
 
 #battle-app {
     position: absolute;
-    top: 50%;
     left: 50%;
+    margin-top: 20px;
+    margin-bottom: 20px;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: 20px;
     border-radius: 10px;
     background-color: rgb(64, 70, 64);
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
+}
+
+@media screen and (max-width: 900px) {
+    #battle-app {
+        width: 322px;
+        height: 1060px;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    #battle-app {
+        width: 650px;
+        height: 532px;
+    }
 }
 
 #battle-app .faction {
