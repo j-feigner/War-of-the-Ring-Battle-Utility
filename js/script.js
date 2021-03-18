@@ -6,11 +6,11 @@ function main() {
 
     freePeoples.unitInputs = document.querySelector("#battle-app #free-peoples.faction .armySettings .unitInputs");
     freePeoples.hitInputs = document.querySelector("#battle-app #free-peoples.faction .hitSettings");
-    freePeoples.statOutput = document.querySelector("#battle-app #free-peoples.faction .statWindow p");
+    freePeoples.statOutput = document.querySelector("#battle-app #free-peoples.faction .statWindow");
 
     shadow.unitInputs = document.querySelector("#battle-app #shadow.faction .armySettings .unitInputs");
     shadow.hitInputs = document.querySelector("#battle-app #shadow.faction .hitSettings");
-    shadow.statOutput = document.querySelector("#battle-app #shadow.faction .statWindow p");
+    shadow.statOutput = document.querySelector("#battle-app #shadow.faction .statWindow");
 
     var inputs = document.querySelectorAll("#battle-app .faction input");
     inputs.forEach((input) => {
@@ -19,6 +19,9 @@ function main() {
             shadow.display();
         })
     })
+
+    freePeoples.display();
+    shadow.display();
 }
 
 function Faction() {
@@ -52,14 +55,14 @@ function Faction() {
         var dist = hitDistribution(this.availableDice, this.leaders, this.baseHitChance, this.rerollHitChance);
         var mean = meanHits(dist);
 
-        var output = "";
+        var histDistOutput = "";
         dist.forEach((hitChance, hitValue) => {
             var hitPercentage = hitChance * 100;
-            output += hitValue + " Hits: " + hitPercentage.toFixed(2) + "%\n";
+            histDistOutput += hitValue + " Hits: " + hitPercentage.toFixed(2) + "%\n";
         })
-        output += "\n" + "Average Hits: " + mean.toFixed(2) + "\n";
 
-        this.statOutput.innerHTML = output;
+        this.statOutput.querySelector(".hitDist").innerHTML = histDistOutput;
+        this.statOutput.querySelector(".hitAvg").innerHTML = "Average Hits: " + mean.toFixed(2);
     }
 }
 
