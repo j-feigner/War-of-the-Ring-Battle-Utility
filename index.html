@@ -5,83 +5,85 @@
     <meta name="author" content="Jordan Feigner">
     <meta name="description" content="Utilities and tools for simulating and exploring the statistical probabilities in War of the Ring, 2nd Edition">
     <meta name="keywords" content="war of the ring, board game, probability, battle">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>War of the Ring Battle Utility</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div id="battle-app">
-        <div id="free-peoples" class="faction">
-            <div class="factionName">
-                <p>Free Peoples</p>
-            </div>
-            <div class="armySettings">
-                <div class="unitInputs">
-                    <div class="labelInputPair">
-                        <label for="fp-leaders">Leaders </label>
-                        <input type="number" id="fp-leaders" class="leaders" min="0" max="10" value="0"/>
-                    </div>
-                    <div class="labelInputPair">
-                        <label for="fp-elites">Elites </label>
-                        <input type="number" id="fp-elites" class="elites" min="0" max="10" value="0"/>
-                    </div>
-                    <div class="labelInputPair">
-                        <label for="fp-regulars">Regulars </label>
-                        <input type="number" id="fp-regulars" class="regulars" min="0" max="10" value="0"/>
+    <main>
+        <div id="battle-app">
+            <div id="free-peoples" class="faction">
+                <div class="factionName">
+                    <p>Free Peoples</p>
+                </div>
+                <div class="armySettings">
+                    <div class="unitInputs">
+                        <div class="labelInputPair">
+                            <label for="fp-leaders">Leaders </label>
+                            <input type="number" id="fp-leaders" class="leaders" min="0" max="10" value="0"/>
+                        </div>
+                        <div class="labelInputPair">
+                            <label for="fp-elites">Elites </label>
+                            <input type="number" id="fp-elites" class="elites" min="0" max="10" value="0"/>
+                        </div>
+                        <div class="labelInputPair">
+                            <label for="fp-regulars">Regulars </label>
+                            <input type="number" id="fp-regulars" class="regulars" min="0" max="10" value="0"/>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="hitSettings">
-                <div class="labelInputPair">
-                    <label for="fp-baseroll-hit">Base Hits On </label>
-                    <input type="number" id="fp-baseroll-hit" class="baseroll" min="1" max="6" value="5"/> +
+                <div class="hitSettings">
+                    <div class="labelInputPair">
+                        <label for="fp-baseroll-hit">Base Hit Threshold</label>
+                        <input type="number" id="fp-baseroll-hit" class="baseroll" min="1" max="6" value="5"/>
+                    </div>
+                    <div class="labelInputPair">
+                        <label for="fp-reroll-hit">Reroll Hits Threshold</label>
+                        <input type="number" id="fp-reroll-hit" class="reroll" min="1" max="6" value="5"/>
+                    </div>
                 </div>
-                <div class="labelInputPair">
-                    <label for="fp-reroll-hit">Reroll Hits On </label>
-                    <input type="number" id="fp-reroll-hit" class="reroll" min="1" max="6" value="5"/> +
+                <div class="statWindow">
+                    <p class="hitDist"></p>
+                    <p class="hitAvg"></p>
                 </div>
             </div>
-            <div class="statWindow">
-                <p class="hitDist"></p>
-                <p class="hitAvg"></p>
+            <div id="shadow" class="faction">
+                <div class="factionName">
+                    <p>Shadow</p>
+                </div>
+                <div class="armySettings">
+                    <div class="unitInputs">
+                        <div class="labelInputPair">
+                            <label for="shadow-leaders"> Leaders</label>
+                            <input type="number" id="shadow-leaders" class="leaders" min="0" max="10" value="0"/>
+                        </div>
+                        <div class="labelInputPair">
+                            <label for="shadow-elites"> Elites</label>
+                            <input type="number" id="shadow-elites" class="elites" min="0" max="10" value="0"/>
+                        </div>
+                        <div class="labelInputPair">
+                            <label for="shadow-regulars"> Regulars</label>
+                            <input type="number" id="shadow-regulars" class="regulars" min="0" max="10" value="0"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="hitSettings">
+                    <div class="labelInputPair">
+                        <label for="shadow-baseroll-hit">Base Hits Threshold</label>
+                        <input type="number" id="shadow-baseroll-hit" class="baseroll" min="0" max="6" value="5"/>
+                    </div>
+                    <div class="labelInputPair">
+                        <label for="shadow-reroll-hit">Reroll Hits Threshold</label>
+                        <input type="number" id="shadow-reroll-hit" class="reroll" min="0" max="6" value="5"/>
+                    </div>
+                </div>
+                <div class="statWindow">
+                    <p class="hitDist"></p>
+                    <p class="hitAvg"></p>
+                </div>
             </div>
         </div>
-        <div id="shadow" class="faction">
-            <div class="factionName">
-                <p>Shadow</p>
-            </div>
-            <div class="armySettings">
-                <div class="unitInputs">
-                    <div class="labelInputPair">
-                        <label for="shadow-leaders"> Leaders</label>
-                        <input type="number" id="shadow-leaders" class="leaders" min="0" max="10" value="0"/>
-                    </div>
-                    <div class="labelInputPair">
-                        <label for="shadow-elites"> Elites</label>
-                        <input type="number" id="shadow-elites" class="elites" min="0" max="10" value="0"/>
-                    </div>
-                    <div class="labelInputPair">
-                        <label for="shadow-regulars"> Regulars</label>
-                        <input type="number" id="shadow-regulars" class="regulars" min="0" max="10" value="0"/>
-                    </div>
-                </div>
-            </div>
-            <div class="hitSettings">
-                <div class="labelInputPair">
-                    <label for="shadow-baseroll-hit">Base Hits On </label>
-                    <input type="number" id="shadow-baseroll-hit" class="baseroll" min="0" max="6" value="5"/> +
-                </div>
-                <div class="labelInputPair">
-                    <label for="shadow-reroll-hit">Reroll Hits On </label>
-                    <input type="number" id="shadow-reroll-hit" class="reroll" min="0" max="6" value="5"/> +
-                </div>
-            </div>
-            <div class="statWindow">
-                <p class="hitDist"></p>
-                <p class="hitAvg"></p>
-            </div>
-        </div>
-    </div>
-
+    </main>
     <script src="js/script.js"></script>
     <script src="js/math.js"></script>
 </body>

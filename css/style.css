@@ -1,45 +1,47 @@
-html {
+html, body {
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
 }
 
+main {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(194, 194, 194);
+    padding: 1em;
+    box-sizing: border-box;
+}
+
 #battle-app {
-    position: absolute;
-    left: 50%;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    padding: 1em;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 1em;
     border-radius: 10px;
-    background-color: rgb(64, 70, 64);
-    transform: translateX(-50%);
-}
-
-@media screen and (max-width: 900px) {
-    #battle-app {
-        width: 322px;
-        height: 1060px;
-    }
-}
-
-@media screen and (min-width: 900px) {
-    #battle-app {
-        width: 650px;
-        height: 532px;
-    }
+    background-color: rgb(44, 44, 44);
+    max-width: 800px;
 }
 
 #battle-app .faction {
-    display: inline-block;
-    width: 240px;
-    height: 450px;
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid black;
+    flex-basis: calc(50% - 1em);
+    flex-grow: 1;
+    padding: 1em;
+    box-sizing: border-box;
+    min-width: 240px;
+    max-width: 400px;
 }
 
 #battle-app .faction .factionName p {
@@ -49,26 +51,25 @@ html {
 }
 
 #battle-app .faction .labelInputPair {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
     width: 100%;
-    height: 42px;
-}
-
-#battle-app .faction .labelInputPair label {
-    display: inline-block;
-    position: relative;
-    width: 75%;
-    height: 100%;
+    height: 3em;
 }
 
 #battle-app .faction .labelInputPair input {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
+    height: 80%;
+    aspect-ratio: 1;
     border: 0px;
     padding: 2px;
+    box-sizing: border-box;
 }
 
 #battle-app .faction .hitSettings {
+    width: 100%;
     margin-top: 10px;
 }
 
